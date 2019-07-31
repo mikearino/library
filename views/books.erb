@@ -1,0 +1,20 @@
+<h3>Checkout our trash books</h3>
+
+<form action="/books/search" method="post">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input id="search" name="search" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Search</button>
+</form>
+
+<% if @books.any? %>
+  <ul>
+    <% @books.each do |book| %>
+      <li><a href="/books/<%= book.id %>"><%= book.title %></a></li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>We got no books Jengus.</p>
+<% end %>

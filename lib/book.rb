@@ -41,5 +41,19 @@ class Book
     Book.new({:title => title, :id => id, :author => author})
   end
 
+  def self.search(input)
+    returned_books = DB.exec("SELECT * FROM books;")
+    books = []
+    returned_books.each do |book|
+      input = input.downcase
+      title = book.fetch("title")
+      id = book.fetch("id").to_i
+      author = book.fetch("author")
+      if title.downcase.include? input.downcase || author.downcase.include? == input.downcase
+        books.push(Book.new({:title => title, :id => id, :author => author}))
+      end
+    end
+    books
+  end
 
 end
