@@ -18,3 +18,18 @@
 <% else %>
   <p>We got no books Jengus.</p>
 <% end %>
+
+<% if @checkouts.any? %>
+  <ul>
+    <% @checkouts.each do |checkout| %>
+      <% result = DB.exec("SELECT * FROM CUSTOMERS WHERE id='#{checkout.customer_id.to_i}';").first%>
+      <% customer_name = result["name"]%>
+      <% book_result = DB.exec("SELECT * FROM BOOKS WHERE id='#{checkout.book_id.to_i}';").first%>
+      <% book_name = book_result["title"]%>
+      <li><%= customer_name%> <%= book_name %> Due Date: <%=checkout.due_date%></li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>All books are ready for checkout Jengus.</p>
+<% end %>

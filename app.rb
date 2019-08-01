@@ -15,7 +15,14 @@ end
 
 get('/books') do
   @books = Book.all
+  @checkouts = Checkout.all
   erb :books
+end
+
+post('/books/search') do
+  search_input = params[:search]
+  @results = Book.search(search_input)
+  erb :search_results
 end
 
 get('/books/:id') do
@@ -31,11 +38,5 @@ post('/books/:id') do
 
   new_checkout = Checkout.new(:customer_id => customer_id, :book_id => @book.id, :due_date => '2001-4-20', :id => nil)
   new_checkout.save
-  erb :book
-end
-
-post('/books/search') do
-  search_input = params[:search]
-  @results = Book.search(search_input)
-  erb :search_results
+  redirect to '/books'
 end

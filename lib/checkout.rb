@@ -13,7 +13,6 @@ class Checkout
     returned_checkouts = DB.exec("SELECT * FROM checkouts")
     checkouts = []
     returned_checkouts.each do |checkout|
-      binding.pry
       book_id = checkout["book_id"].to_i
       id = checkout["id"].to_i
       customer_id = checkout["customer_id"].to_i

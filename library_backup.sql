@@ -176,6 +176,24 @@ COPY public.books (id, title, author) FROM stdin;
 --
 
 COPY public.checkouts (id, customer_id, book_id, due_date) FROM stdin;
+1	54	94	2019-08-14
+2	53	95	2007-04-20
+3	55	93	4000-05-23
+4	53	93	2001-04-20
+5	55	96	2001-04-20
+6	55	94	2001-04-20
+7	55	94	2001-04-20
+8	54	94	2001-04-20
+9	54	94	2001-04-20
+10	53	95	2001-04-20
+11	54	95	2001-04-20
+12	55	95	2001-04-20
+13	54	95	2001-04-20
+14	53	95	2001-04-20
+15	53	95	2001-04-20
+16	53	95	2001-04-20
+17	53	95	2001-04-20
+18	54	96	2001-04-20
 \.
 
 
@@ -184,6 +202,9 @@ COPY public.checkouts (id, customer_id, book_id, due_date) FROM stdin;
 --
 
 COPY public.customers (id, name) FROM stdin;
+53	George Hair
+54	Carol Krangus
+55	Rony Rungerson
 \.
 
 
@@ -198,14 +219,14 @@ SELECT pg_catalog.setval('public.books_id_seq', 96, true);
 -- Name: checkouts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('public.checkouts_id_seq', 1, false);
+SELECT pg_catalog.setval('public.checkouts_id_seq', 18, true);
 
 
 --
 -- Name: customers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('public.customers_id_seq', 52, true);
+SELECT pg_catalog.setval('public.customers_id_seq', 55, true);
 
 
 --
