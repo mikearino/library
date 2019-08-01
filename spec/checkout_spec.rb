@@ -44,13 +44,4 @@ describe '#Checkout' do
     end
   end
 
-#   describe('.find') do
-#     it('finds a checkout by id') do
-#       checkout = Checkout.new({:customer_id => "Wheres Waldo", :id => nil})
-#       checkout.save
-#       checkout2 = Checkout.new({:customer_id => "Hot Trash", :id => nil})
-#       checkout2.save
-#       expect(Checkout.find(checkout.id)).to(eq(checkout))
-#     end
-#   end
 end

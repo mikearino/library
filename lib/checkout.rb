@@ -19,22 +19,21 @@ class Checkout
       customer_id = checkout["customer_id"].to_i
       due_date = checkout["due_date"]
       checkouts.push(Checkout.new({:customer_id => customer_id, :book_id => book_id, :due_date => due_date, :id => id}))
+    end
+    checkouts
   end
-  checkouts
-end
 
-def save
-  result = DB.exec("INSERT INTO checkouts (customer_id, book_id, due_date) VALUES ('#{@customer_id}', '#{@book_id}', '#{@due_date}') RETURNING id;")
-  @id = result.first().fetch("id").to_i
+  def save
+    result = DB.exec("INSERT INTO checkouts (customer_id, book_id, due_date) VALUES (#{@customer_id}, #{@book_id}, '#{@due_date}') RETURNING id;")
+    @id = result.first().fetch("id").to_i
   end
 
   def ==(checkout_to_compare)
     self.id() == checkout_to_compare.id()
   end
 
-def self.clear
-  DB.exec("DELETE FROM checkouts *")
-end
-
+  def self.clear
+    DB.exec("DELETE FROM checkouts *")
+  end
 
 end

@@ -20,6 +20,17 @@ end
 
 get('/books/:id') do
   @book = Book.find(params[:id].to_i)
+  @customers = Customer.all
+  erb :book
+end
+
+post('/books/:id') do
+  @book = Book.find(params[:id].to_i)
+  @customers = Customer.all
+  customer_id = params[:customer]
+
+  new_checkout = Checkout.new(:customer_id => customer_id, :book_id => @book.id, :due_date => '2001-4-20', :id => nil)
+  new_checkout.save
   erb :book
 end
 
